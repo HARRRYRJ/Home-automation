@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ededed"
+    tools:context="com.example.ankit.homecontrol.ControlPad">
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
+
+    <LinearLayout
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/fanSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <FrameLayout
+            android:padding="6dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp">
+
+            <ImageView
+                android:id="@+id/fanIMG"
+                android:src="@drawable/new_fan"
+                android:layout_width="56dp"
+                android:layout_height="56dp" />
+        </FrameLayout>
+
+
+        <Switch
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="70dp"
+            android:layout_toRightOf="@+id/fanSwitch"
+            android:id="@+id/fanSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bulbSection"
+        android:layout_below="@+id/fanSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <FrameLayout
+            android:padding="8dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp">
+
+            <ImageView
+                android:id="@+id/bulbIMG"
+                android:background="@drawable/lamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+
+        <Switch
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="70dp"
+            android:layout_toRightOf="@+id/ledInfo"
+            android:id="@+id/bulbSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tempSection"
+        android:orientation="horizontal"
+        android:layout_below="@+id/bulbSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <FrameLayout
+            android:padding="8dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp">
+
+            <ImageView
+                android:src="@drawable/easy_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+
+        <TextView
+            android:textColor="#009988"
+            android:gravity="center_horizontal"
+            android:textSize="30dp"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:layout_marginLeft="50dp"
+            android:text="32"
+            android:id="@+id/tempPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/degree"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center_horizontal|bottom"
+        android:layout_alignParentBottom="true"
+        android:background="#009988"
+        android:layout_below="@+id/tempSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_margin="30dp"
+            android:elevation="4dp"
+            android:padding="14dp"
+            android:id="@+id/voiceModeBtn"
+            android:background="@drawable/speak"
+            android:src="@android:drawable/ic_btn_speak_now"
+            android:layout_width="56dp"
+            android:layout_height="56dp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
