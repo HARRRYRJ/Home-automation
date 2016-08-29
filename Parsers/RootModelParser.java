@@ -5,11 +5,11 @@ import org.json.JSONArray;
 
 class RootModelParser {
 
-		CopyrightModelParser copyright_parser = new CopyrightModelParser();
-		CreatorModelParser creator_parser = new CreatorModelParser();
-		Call_for_papersModelParser call_for_papers_parser = new Call_for_papersModelParser();
 		VersionModelParser version_parser = new VersionModelParser();
+		CopyrightModelParser copyright_parser = new CopyrightModelParser();
+		Call_for_papersModelParser call_for_papers_parser = new Call_for_papersModelParser();
 		Social_linksModelParser social_links_parser;
+		CreatorModelParser creator_parser = new CreatorModelParser();
 
 		public RootModelParser() {
 			social_links_parser = new Social_linksModelParser();
@@ -21,13 +21,11 @@ class RootModelParser {
 			try {
 					JSONObject jsobj = new JSONObject(json_object);
 
+					VersionModel version = version_parser.parseVersionModel(jsobj.getJSONObject("version").toString());
+
 					CopyrightModel copyright = copyright_parser.parseCopyrightModel(jsobj.getJSONObject("copyright").toString());
 
-					CreatorModel creator = creator_parser.parseCreatorModel(jsobj.getJSONObject("creator").toString());
-
 					Call_for_papersModel call_for_papers = call_for_papers_parser.parseCall_for_papersModel(jsobj.getJSONObject("call_for_papers").toString());
-
-					VersionModel version = version_parser.parseVersionModel(jsobj.getJSONObject("version").toString());
 
 					ArrayList<Social_linksModel> social_linkss = new ArrayList<>();
 					JSONArray social_links_arr = jsobj.getJSONArray("social_links");
@@ -38,7 +36,9 @@ class RootModelParser {
 
 					}
 
-					local_model = new RootModel(jsobj.getString("privacy") , jsobj.getString("organizer_name") , jsobj.getString("code_of_conduct") , copyright, creator, jsobj.getString("start_time") , jsobj.getString("email") , jsobj.getString("name") , jsobj.getInt("id") , jsobj.getString("background_image") , jsobj.getString("end_time") , call_for_papers, jsobj.getString("type") , jsobj.getString("location_name") , version, jsobj.getString("timezone") , jsobj.getString("schedule_published_on") , jsobj.getString("logo") , social_linkss, jsobj.getString("organizer_description") , jsobj.getString("description") , jsobj.getString("topic") , jsobj.getString("state") , );
+					CreatorModel creator = creator_parser.parseCreatorModel(jsobj.getJSONObject("creator").toString());
+
+					local_model = new RootModel(jsobj.getString("organizer_name") , version, jsobj.getString("email") , copyright, jsobj.getString("code_of_conduct") , jsobj.getString("timezone") , jsobj.getString("privacy") , call_for_papers, jsobj.getString("start_time") , jsobj.getString("location_name") , jsobj.getInt("id") , jsobj.getString("type") , jsobj.getString("end_time") , social_linkss, jsobj.getString("schedule_published_on") , jsobj.getString("state") , jsobj.getString("name") , jsobj.getString("background_image") , jsobj.getString("topic") , jsobj.getString("description") , jsobj.getString("logo") , jsobj.getString("organizer_description") , creator, );
  			} 
 			catch (JSONException e){
 
