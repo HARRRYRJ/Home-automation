@@ -1,4 +1,8 @@
 .gradle
+*.py
+*.sh
+/json
+msg.txt
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
